@@ -67,7 +67,7 @@ public class calender {
 		}
 
 		for(int i = 0; i<num; i++) {
-			//cal.maxDaysofMonth(array[i]);
+			//cal.maxDaysofMonth(array[i]);   //내 실수(위 메서드에서 return 이라는 게 춝력도 하는거라고 생각-return은 출력과 관계없음)
 			System.out.printf("%d월의 최대일수는 %d일입니다%n",array[i],cal.maxDaysofMonth(array[i]));
 		}
 		
