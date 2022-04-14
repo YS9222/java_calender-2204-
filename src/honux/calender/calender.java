@@ -44,7 +44,7 @@ public class calender {
 
 		// 로직구현후(ABCD)
 //		System.out.printf("%d월은 %d일 까지 있습니다",month, maxDaysofMonth(month)); (ABCD4)이렇게 하면 안되고
-//		System.out.printf("%d월은 %d일 까지 있습니다", month, cal.maxDaysofMonth(month));		//이렇게 히야
+//		System.out.printf("%d월은 %d일 까지 있습니다", month, cal.maxDaysofMonth(month));		//이렇게 해야
 		// 중요!!(같은 클래스 안의 메서드라도 사용하기 위해서는 cal. 필요)
 		
 		
@@ -53,25 +53,53 @@ public class calender {
 		
 		//숫자입력받은 후 숫자만큼 반복입력받기 EX 4 입력하면 네번 반복하여 입력받기
 		//my try
+//		Scanner scanner = new Scanner(System.in);
+//		calender cal = new calender();
+//		System.out.println("반복횟수를 입력하세요");
+//		int num = scanner.nextInt();
+//		
+//		
+//		System.out.println("월을 입력하세요");
+//		int[] array = new int [num];
+//		for(int q = 0; q<num; q++) {
+//			int ArrayNumber = scanner.nextInt();
+//			array[q] = ArrayNumber;
+//		}
+//
+//		for(int i = 0; i<num; i++) {
+//			//cal.maxDaysofMonth(array[i]);   //내 실수(위 메서드에서 return 이라는 게 춝력도 하는거라고 생각-return은 출력과 관계없음)
+//			System.out.printf("%d월의 최대일수는 %d일입니다%n",array[i],cal.maxDaysofMonth(array[i]));
+//		}
+		
+		
+		//While활용해서 입력값이 -1 아니면 반복되게(prompt 활용)
+		String PROMPT = "cal>";
 		Scanner scanner = new Scanner(System.in);
-		calender cal = new calender();
-		System.out.println("반복횟수를 입력하세요");
-		int num = scanner.nextInt();
+		calender cal = new calender(); 
+
+		int month = 1;
 		
-		
-		System.out.println("월을 입력하세요");
-		int[] array = new int [num];
-		for(int q = 0; q<num; q++) {
-			int ArrayNumber = scanner.nextInt();
-			array[q] = ArrayNumber;
+//		while(month!=-1) {		//입력값이 -1인 경우 중단
+//			System.out.println("달을 입력하세요");
+//			System.out.print(PROMPT);
+//			month = scanner.nextInt();
+//			System.out.printf("%d월은 %d일 까지 있습니다%n", month, cal.maxDaysofMonth(month));		
+//	}		//-1이나 1~12 벗어나는 숫자가 들어가면 오류가 발생 - 반복문은 일단 입력되면 반복문내 동작문이 동작되고 난 후 조건을 비교하여 중단되기때문
+			//so, -1이 들어간 경우 cal.maxDayofMonth에서 -1이 들어가기 때문에 오류가 발생 
+			
+		//이 경우 
+		while(true) {		//무한루프
+		System.out.println("달을 입력하세요");
+		System.out.print(PROMPT);
+		month = scanner.nextInt();
+		if(month == -1) {	//-1인 경우 반복문이 중단되고 while을 벗어남
+			break;
 		}
-
-		for(int i = 0; i<num; i++) {
-			//cal.maxDaysofMonth(array[i]);   //내 실수(위 메서드에서 return 이라는 게 춝력도 하는거라고 생각-return은 출력과 관계없음)
-			System.out.printf("%d월의 최대일수는 %d일입니다%n",array[i],cal.maxDaysofMonth(array[i]));
+		if(month>12) {		//벗어나는 경우 while의 처음으로 돌아감
+			continue;
 		}
-		
-
-	}
-
+		System.out.printf("%d월은 %d일 까지 있습니다%n", month, cal.maxDaysofMonth(month));	
+		}
+		System.out.println("BYE");
+}
 }
