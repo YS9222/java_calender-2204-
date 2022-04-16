@@ -11,8 +11,9 @@ public class Prompt {
 		Scanner scanner = new Scanner(System.in);
 		calender cal = new calender(); 
 
-		int month = 1;
+		int month = 1; //변수선언
 		int year = 1;
+		
 		
 //		while(month!=-1) {		//입력값이 -1인 경우 중단
 //			System.out.println("달을 입력하세요");
