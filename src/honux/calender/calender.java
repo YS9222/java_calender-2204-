@@ -10,6 +10,23 @@ public class calender {
 		return Max_Days[month - 1];
 	}
 
+	//for Prompt.java(달력출력)
+	public void printSampleCalendar(int year, int month) {
+		System.out.printf("    <<%4d %3d>>%n",year, month); //%3d = 1칸값이 들어가도라도 3칸 차지(앞2칸은 빈칸으로)
+		System.out.println(" SU MO TU WE TH FR SA");
+		System.out.println("--------------------");
+		for(int i = 1; i <= maxDaysofMonth(month); i++) {
+		
+			System.out.printf("%3d",i);
+			
+			if(i % 7==0) {  //들어가는 각 일의 값을 7로 나눠서 나누어떨어지는 경우
+				System.out.println(); //줄바꿈기능이 있는 빈칸 넣기
+			}
+		
+		}
+	}
+	
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		// calendar Stage 1
@@ -72,34 +89,8 @@ public class calender {
 //		}
 		
 		
-		//While활용해서 입력값이 -1 아니면 반복되게(prompt 활용)
-		String PROMPT = "cal>";
-		Scanner scanner = new Scanner(System.in);
-		calender cal = new calender(); 
 
-		int month = 1;
 		
-//		while(month!=-1) {		//입력값이 -1인 경우 중단
-//			System.out.println("달을 입력하세요");
-//			System.out.print(PROMPT);
-//			month = scanner.nextInt();
-//			System.out.printf("%d월은 %d일 까지 있습니다%n", month, cal.maxDaysofMonth(month));		
-//	}		//-1이나 1~12 벗어나는 숫자가 들어가면 오류가 발생 - 반복문은 일단 입력되면 반복문내 동작문이 동작되고 난 후 조건을 비교하여 중단되기때문
-			//so, -1이 들어간 경우 cal.maxDayofMonth에서 -1이 들어가기 때문에 오류가 발생 
-			
-		//이 경우 
-		while(true) {		//무한루프
-		System.out.println("달을 입력하세요");
-		System.out.print(PROMPT);
-		month = scanner.nextInt();
-		if(month == -1) {	//-1인 경우 반복문이 중단되고 while을 벗어남
-			break;
-		}
-		if(month>12) {		//벗어나는 경우 while의 처음으로 돌아감
-			continue;
-		}
-		System.out.printf("%d월은 %d일 까지 있습니다%n", month, cal.maxDaysofMonth(month));	
-		}
-		System.out.println("BYE");
+		
 }
 }
