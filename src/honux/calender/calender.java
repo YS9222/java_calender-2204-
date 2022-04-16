@@ -24,23 +24,45 @@ public class calender {
 	}
 
 	//for Prompt.java(달력출력)
-	public void printSampleCalendar(int year, int month) {
+	public void printSampleCalendar(int year, int month, int Day) {
 		System.out.printf("    <<%4d %3d>>%n",year, month); //%3d = 1칸값이 들어가도라도 3칸 차지(앞2칸은 빈칸으로)
 		System.out.println(" SU MO TU WE TH FR SA");
-		System.out.println("--------------------");
+		System.out.println("---------------------");
 		
-	
-		int maxDay = maxDaysofMonth(year, month);
-		
-		for(int i = 1; i <= maxDay; i++) {
-		
-			System.out.printf("%3d",i);
+		//넣은 day에 따라 맞는 공백 출력
+		for(int i = 0; i<Day; i++) {
+			System.out.print("   ");   // "   " * i 하려함 i개수만큼 반복되기에 곱할필요 없음
+										//줄바꿈기능 있는 println이 아니라 print
+		}
 			
-			if(i % 7==0) {  //들어가는 각 일의 값을 7로 나눠서 나누어떨어지는 경우
+		int maxDay = maxDaysofMonth(year, month);
+		//FIRST LINE
+		int count = 7-Day;    //첫줄에서 7-day 만큼만 출력
+		int delim = (count<7)? count:0;   //밑에서 else if 로 else if (i % 7 ==0)하는 대신 변수에서 if, elseif 로 나눠놓음
+		/*if (delim<7){
+		 * delim = count}
+		 * else {
+		 * delim = 0 
+		 * }  해당 if문과 위 줄은 동일 의미 
+		 */
+		
+		
+		for(int i = 1; i<=count; i++) {
+			System.out.printf("%3d",i);
+		}
+			System.out.println();
+		//SECOND LINE TO LAST
+		count++;  //count에 1 더하기
+		for(int i = count; i <= maxDay; i++) {
+
+			System.out.printf("%3d",i); //한글자다 3칸씩 자리 차지하면서 최대일수까지 1부터 출력
+			
+			if(i % 7 == delim) {  //들어가는 각 일의 값을 7로 나눠서 나머지를 따져서 언제 줄바꿈할지
 				System.out.println(); //줄바꿈기능이 있는 빈칸 넣기
 			}
 		
 		}
+		System.out.println();
 	}
 	
 	
