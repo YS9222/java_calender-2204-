@@ -11,7 +11,7 @@ public class Prompt {
 		Scanner scanner = new Scanner(System.in);
 		calender cal = new calender(); 
 
-		int month = 1; //변수선언
+		int month = 1; //변수선언(숫자상관없음 )
 		int year = 1;
 		
 		
@@ -26,9 +26,11 @@ public class Prompt {
 		//이 경우
 		while(true) {		//무한루프
 		System.out.println("연도를 입력하세요");
+		System.out.print("Year> ");
 		year = scanner.nextInt();
+		
 		System.out.println("달을 입력하세요");
-		System.out.print(PROMPT); //prompt 활용 
+		System.out.print("Month> "); //prompt 활용 위치 중요
 		month = scanner.nextInt();
 		if(month == -1) {	//-1인 경우 반복문이 중단되고 while을 벗어남
 			break;
