@@ -12,6 +12,7 @@ public class Prompt {
 		calender cal = new calender(); 
 
 		int month = 1;
+		int year = 1;
 		
 //		while(month!=-1) {		//입력값이 -1인 경우 중단
 //			System.out.println("달을 입력하세요");
@@ -23,6 +24,8 @@ public class Prompt {
 		
 		//이 경우
 		while(true) {		//무한루프
+		System.out.println("연도를 입력하세요");
+		year = scanner.nextInt();
 		System.out.println("달을 입력하세요");
 		System.out.print(PROMPT); //prompt 활용 
 		month = scanner.nextInt();
@@ -35,7 +38,7 @@ public class Prompt {
 //		System.out.printf("%d월은 %d일 까지 있습니다%n", month, cal.maxDaysofMonth(month));
 		
 		//cal의 달력출력
-		cal.printSampleCalendar(2022, month);	
+		cal.printSampleCalendar(year, month);	
 		System.out.println(); // 달력끝난후 줄바꿈위해
 		}
 		System.out.println("BYE");

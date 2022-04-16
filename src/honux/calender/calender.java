@@ -5,9 +5,22 @@ import java.util.Scanner;
 public class calender {
 	// (ABCD2) 아래로직을 위에서 함수(메서드)로 구현
 	public static final int[] Max_Days = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	public static final int[] Leap_Max_Days = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }; //윤년용 최대일수(2월에 29일 )
 
-	public int maxDaysofMonth(int month) {
-		return Max_Days[month - 1];
+	public boolean isLeepYear(int year) { //year을 입력받았을때 윤년인지 판단
+		if (year % 4 == 0 && (year % 100 != 0 || year % 400 ==0)) { // 4로나누어떨어지고 and (100으로나누어떨어지지않거나 or 400으로 나누어떨어짐)
+			return true; 					//논리구조 and = && , or = || (sift+\\)
+		}
+		else return false;
+	}
+	
+	public int maxDaysofMonth(int year, int month) {
+		if (isLeepYear(year)) {
+			return Leap_Max_Days[month - 1];
+		}
+		else  {
+			return Max_Days[month - 1];		
+		}
 	}
 
 	//for Prompt.java(달력출력)
@@ -15,7 +28,11 @@ public class calender {
 		System.out.printf("    <<%4d %3d>>%n",year, month); //%3d = 1칸값이 들어가도라도 3칸 차지(앞2칸은 빈칸으로)
 		System.out.println(" SU MO TU WE TH FR SA");
 		System.out.println("--------------------");
-		for(int i = 1; i <= maxDaysofMonth(month); i++) {
+		
+	
+		int maxDay = maxDaysofMonth(year, month);
+		
+		for(int i = 1; i <= maxDay; i++) {
 		
 			System.out.printf("%3d",i);
 			
